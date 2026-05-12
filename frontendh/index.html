@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Car Price PredictionW</title>
+    <title>Car Price Prediction</title>
 
     <style>
         body {
@@ -28,7 +28,7 @@
         }
 
         button {
-            background: yellow;
+            background: green;
             color: white;
             border: none;
             cursor: pointer;
@@ -56,16 +56,20 @@
         <input id="kms" type="number" placeholder="KM Driven">
         <input id="city" placeholder="City">
 
-        <button type="button" onclick="predictPrice()">Predict Price</button>
+        <button onclick="predictPrice()">Predict Price</button>
 
         <div class="result" id="result"></div>
 
     </div>
 
     <script>
+
         async function predictPrice() {
 
+            const resultDiv = document.getElementById("result");
+
             try {
+
                 const data = {
                     brand: document.getElementById("brand").value,
                     fuel_type: document.getElementById("fuel").value,
@@ -75,26 +79,38 @@
                     city: document.getElementById("city").value
                 };
 
-                const response = await fetch("http://usedcarpricepredictivejoin-env.eba-i7cbhdkd.ap-south-1.elasticbeanstalk.com/predict", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "x-api-key": "mysecret3333"
-                    },
-                    body: JSON.stringify(data)
-                });
+                const response = await fetch(
+                    "http://usedcarpricepredictive1-env.eba-i29q2ywu.ap-south-1.elasticbeanstalk.com/predict",
+                    {
+                        method: "post",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "x-api-key": "mysecret3333"
+                        },
+                        body: JSON.stringify(data)
+                    }
+                );
+
+                // 🔴 check HTTP error
+                if (!response.ok) {
+                    const errText = await response.text();
+                    console.log("ERROR RESPONSE:", errText);
+                    resultDiv.innerHTML = "Error ❌ Server issue";
+                    return;
+                }
 
                 const result = await response.json();
+                console.log("RESPONSE:", result);
 
-                document.getElementById("result").innerHTML =
-                    "Predicted Price: ₹ " + result.predicted_price;
+                // ✅ FIXED KEY HERE
+                resultDiv.innerHTML = "Predicted Price: ₹ " + result.predicted_price;
 
             } catch (error) {
                 console.log(error);
-                document.getElementById("result").innerHTML =
-                    "Error ❌ Backend not working";
+                resultDiv.innerHTML = "Error ❌ Backend not reachable";
             }
         }
+
     </script>
 
 </body>
