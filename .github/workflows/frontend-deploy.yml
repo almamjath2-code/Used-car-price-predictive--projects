@@ -21,4 +21,4 @@ jobs:
           aws-region: ap-south-1
 
       - name: Upload to S3
-        run: aws s3 sync frontend/ s3://car-price-frontend-app --delete
+        run: aws s3 sync frontendh/ s3://car-price-frontend-app --delete
