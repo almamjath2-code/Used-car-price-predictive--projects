@@ -22,7 +22,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-API_KEY = os.getenv("API_KEY", "test-key")
+API_KEY = os.getenv("API_KEY")
 
 
 # 1. Load models
