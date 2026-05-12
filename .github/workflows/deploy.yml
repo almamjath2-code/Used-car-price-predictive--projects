@@ -26,3 +26,4 @@ jobs:
         region: ${{ secrets.AWS_REGION }}
         version_label: github-${{ github.sha }}
         deployment_package: deploy.zip
+        use_existing_version_if_available: true
