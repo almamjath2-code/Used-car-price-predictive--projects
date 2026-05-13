@@ -44,7 +44,7 @@ def home():
 
 @app.get("/health")
 def health():
-    return {"health": " not good "}
+    return {"health": " bad good "}
 
 
 
