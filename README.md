@@ -13,10 +13,10 @@ Feature Engineering
 Machine Learning Model Training
 Model Evaluation
 Model Deployment
-# 🌐 Live Demo
-Frontend Application
+# 🌐 Live Demo  
+Frontend Application 
 
-Car Price Prediction App
+Car Price Prediction App: http://car-price-frontend-app.s3-website.ap-south-1.amazonaws.com/
 
 🖥️ Project Architecture
 User → Frontend (AWS S3)
