@@ -97,7 +97,7 @@ NumPy
 Scikit-learn
 Matplotlib
 Seaborn
-Pickle
+joblip
 Backend
 FastAPI / Flask
 Frontend
